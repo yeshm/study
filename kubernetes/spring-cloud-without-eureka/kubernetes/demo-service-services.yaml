@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-service
+  namespace: spring-cloud-without-eureka
+spec:
+  selector:
+    app: demo-service
+  ports:
+  - protocol: TCP
+    port: 8111
+    targetPort: http

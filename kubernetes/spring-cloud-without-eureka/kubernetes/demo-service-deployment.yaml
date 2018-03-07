@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: demo-service
+  namespace: spring-cloud-without-eureka
+  labels:
+    app: demo-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-service
+  template:
+    metadata:
+      labels:
+       app: demo-service
+    spec:
+      containers:
+      - name: demo-service
+        image: yeshuangming/spring-cloud-without-eureka-demo-service:0.0.1-SNAPSHOT
+        ports:
+        - name: http
+          containerPort: 8111
