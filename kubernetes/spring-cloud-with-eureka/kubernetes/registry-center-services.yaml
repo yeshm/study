@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: registry-center
+  namespace: spring-cloud-with-eureka
+spec:
+  selector:
+    app: registry-center
+  ports:
+  - protocol: TCP
+    port: 8761
+    targetPort: http
+  type: LoadBalancer

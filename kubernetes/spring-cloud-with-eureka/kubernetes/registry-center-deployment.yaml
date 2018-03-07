@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: registry-center
+  namespace: spring-cloud-with-eureka
+  labels:
+    app: registry-center
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry-center
+  template:
+    metadata:
+      labels:
+       app: registry-center
+    spec:
+      containers:
+      - name: registry-center
+        image: yeshuangming/spring-cloud-with-eureka-registry-center:0.0.1-SNAPSHOT
+        ports:
+        - name: http
+          containerPort: 8761
