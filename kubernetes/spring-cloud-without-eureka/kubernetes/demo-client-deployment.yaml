@@ -2,7 +2,6 @@ apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: demo-client
-  namespace: spring-cloud-without-eureka
   labels:
     app: demo-client
 spec:
@@ -20,4 +19,7 @@ spec:
         image: yeshuangming/spring-cloud-without-eureka-demo-client:0.0.1-SNAPSHOT
         ports:
         - name: http
-          containerPort: 9100
+          containerPort: 9001
+        envFrom:
+          - configMapRef:
+              name: spring-cloud-without-eureka

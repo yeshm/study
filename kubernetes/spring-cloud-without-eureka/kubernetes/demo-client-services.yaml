@@ -2,12 +2,11 @@ kind: Service
 apiVersion: v1
 metadata:
   name: demo-client
-  namespace: spring-cloud-without-eureka
 spec:
   selector:
     app: demo-client
   ports:
   - protocol: TCP
-    port: 9100
+    port: 9001
     targetPort: http
   type: LoadBalancer
