@@ -1,0 +1,40 @@
+apiVersion: apps/v1beta2 # for versions after 1.9.0 use apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      #阿里云盘只能跟同一个可用区的ecs挂载，如果k8s集群包含不同可用区的ecs，需要根据情况进行适配
+      nodeSelector:
+        failure-domain.beta.kubernetes.io/zone: cn-hangzhou-g
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        envFrom:
+          - secretRef:
+              name: mysql
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+        - name: mysql-cnf
+          mountPath: /etc/mysql/conf.d/
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+      - name: mysql-cnf
+        configMap:
+          name: mysql
+          key: mysql.cnf
