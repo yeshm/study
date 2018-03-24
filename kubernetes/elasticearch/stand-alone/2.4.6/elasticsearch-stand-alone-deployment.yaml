@@ -1,0 +1,40 @@
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  labels:
+    app: elasticsearch
+  name: elasticsearch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      #阿里云盘只能跟同一个可用区的ecs挂载，如果k8s集群包含不同可用区的ecs，需要根据情况进行适配
+      nodeSelector:
+        failure-domain.beta.kubernetes.io/zone: cn-hangzhou-g
+      containers:
+        - name: elasticsearch
+          #这个镜像安装了head plugin
+          image: registry.cn-hangzhou.aliyuncs.com/yeshm/elasticsearch:2.4.6
+          ports:
+            - containerPort: 9200
+              name: http
+              protocol: TCP
+            - containerPort: 9300
+              name: transport
+              protocol: TCP
+          env:
+            - name: "ES_JAVA_OPTS"
+              value: "-Xms256m -Xmx256m"
+          volumeMounts:
+            - name: elasticsearch-persistent-storage
+              mountPath: /usr/share/elasticsearch/data
+      volumes:
+        - name: elasticsearch-persistent-storage
+          persistentVolumeClaim:
+            claimName: elasticsearch-pv-claim

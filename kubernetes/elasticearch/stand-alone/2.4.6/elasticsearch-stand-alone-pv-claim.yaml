@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: elasticsearch-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+#  storageClassName: "standard"
+#  storageClassName: "alicloud-disk-common"
+#  storageClassName: "alicloud-disk-efficiency"
+  storageClassName: "alicloud-disk-ssd"
