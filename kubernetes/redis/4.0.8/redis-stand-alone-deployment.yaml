@@ -1,0 +1,32 @@
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  labels:
+    app: redis
+  name: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      #阿里云盘只能跟同一个可用区的ecs挂载，如果k8s集群包含不同可用区的ecs，需要根据情况进行适配
+      nodeSelector:
+        failure-domain.beta.kubernetes.io/zone: cn-hangzhou-g
+      containers:
+        - name: redis
+          image: redis:4.0.8
+          ports:
+            - containerPort: 6379
+              protocol: TCP
+          volumeMounts:
+            - name: redis-persistent-storage
+              mountPath: /data
+      volumes:
+        - name: redis-persistent-storage
+          persistentVolumeClaim:
+            claimName: redis-pv-claim
