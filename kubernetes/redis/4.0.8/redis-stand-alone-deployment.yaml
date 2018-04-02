@@ -20,13 +20,20 @@ spec:
       containers:
         - name: redis
           image: redis:4.0.8
+          command: ["redis-server","/usr/local/etc/redis/redis.conf"]
           ports:
             - containerPort: 6379
               protocol: TCP
           volumeMounts:
             - name: redis-persistent-storage
               mountPath: /data
+            - name: redis-config
+              mountPath: /usr/local/etc/redis/
       volumes:
         - name: redis-persistent-storage
           persistentVolumeClaim:
             claimName: redis-pv-claim
+        - name: redis-config
+          configMap:
+            name: redis-config
+            key: redis.conf
