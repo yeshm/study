@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta2 # for versions after 1.9.0 use apps/v1
+kind: Deployment
+metadata:
+  name: hello-node
+spec:
+  selector:
+    matchLabels:
+      app: hello-node
+  template:
+    metadata:
+      labels:
+        app: hello-node
+    spec:
+      containers:
+      - image: yeshuangming/hello-node:0.0.1
+        name: hello-node
+        ports:
+        - containerPort: 8888
+          name: http
