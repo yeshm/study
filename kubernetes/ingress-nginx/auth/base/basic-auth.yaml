@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: basic-auth
+type: Opaque
+data:
+  #账号 foo 密码 OX1yn1Ye
+  auth: Zm9vOiRhcHIxJGJ5b29qL0tqJDRwSkY5ajV1S0VGNzlKY1cySUxqSC4K
+
