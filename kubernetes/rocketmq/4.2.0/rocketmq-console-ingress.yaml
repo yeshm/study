@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: rocketmq
+spec:
+  rules:
+  - host: rocketmq.dev-k8s.xxx.com
+    http:
+      paths:
+      - backend:
+          serviceName: rocketmq-console
+          servicePort: 8080

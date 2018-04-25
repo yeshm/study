@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rocketmq-namesrv
+spec:
+  ports:
+  - port: 9876
+  selector:
+    app: rocketmq-namesrv
+#  type: LoadBalancer
+  type: ClusterIP

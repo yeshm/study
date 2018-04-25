@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rocketmq-broker
+spec:
+  containers:
+  - image: yeshuangming/rocketmq-broker:4.2.0
+    name: rocketmq-broker
+    command: ["/bin/sh"]
+    args: [""]
+    stdin: true
+    tty: true
+    envFrom:
+    - configMapRef:
+        name: rocketmq
+    ports:
+    - containerPort: 10909
+    - containerPort: 10911
+  restartPolicy: Never

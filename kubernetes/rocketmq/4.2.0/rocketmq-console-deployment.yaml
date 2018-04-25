@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta2 # for versions after 1.9.0 use apps/v1
+kind: Deployment
+metadata:
+  name: rocketmq-console
+spec:
+  selector:
+    matchLabels:
+      app: rocketmq-console
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: rocketmq-console
+    spec:
+      containers:
+      - image: yeshuangming/rocketmq-console:4.1.0-incubating
+        name: rocketmq-console
+        command: [ "java"]
+        args: ["-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar", "--rocketmq.config.namesrvAddr=${NAMESRV_ADDR}"]
+        envFrom:
+        - configMapRef:
+            name: rocketmq
+        ports:
+        - containerPort: 8080

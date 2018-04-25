@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta2 # for versions after 1.9.0 use apps/v1
+kind: Deployment
+metadata:
+  name: rocketmq-namesrv
+spec:
+  selector:
+    matchLabels:
+      app: rocketmq-namesrv
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: rocketmq-namesrv
+    spec:
+      containers:
+      - image: yeshuangming/rocketmq-namesrv:4.2.0
+        name: rocketmq-namesrv
+        ports:
+        - containerPort: 9876
