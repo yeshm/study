@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: disk-common
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: alicloud-disk-common
+  resources:
+    requests:
+     storage: 20Gi

@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: disk-pod-common
+spec:
+  containers:
+  - name: disk-pod
+    image: nginx
+    volumeMounts:
+     - name: disk-pvc
+       mountPath: "/mnt"
+  restartPolicy: "Never"
+ volumes:
+   - name: disk-pvc
+     persistentVolumeClaim:
+       claimName: disk-common
