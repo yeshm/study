@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: grpc-hello-world-server
+spec:
+  selector:
+    app: grpc-hello-world-server
+  ports:
+  - protocol: TCP
+    port: 50051
+    targetPort: tcp
+  type: ClusterIP

@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: grpc-hello-world-server
+  labels:
+    app: grpc-hello-world-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: grpc-hello-world-server
+  template:
+    metadata:
+      labels:
+       app: grpc-hello-world-server
+    spec:
+      containers:
+      - name: grpc-hello-world-server
+        image: yeshuangming/grpc-hello-world-server:0.0.1
+        ports:
+        - name: tcp
+          containerPort: 50051

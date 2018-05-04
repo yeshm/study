@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: grpc-hello-world-client
+  labels:
+    app: grpc-hello-world-client
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: grpc-hello-world-client
+  template:
+    metadata:
+      labels:
+       app: grpc-hello-world-client
+    spec:
+      containers:
+      - name: grpc-hello-world-client
+        image: yeshuangming/grpc-hello-world-client:0.0.2
