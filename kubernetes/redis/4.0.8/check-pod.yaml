@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: check
+spec:
+  nodeSelector:
+    failure-domain.beta.kubernetes.io/zone: cn-hangzhou-g
+  containers:
+  - name: check
+    image: registry.cn-hangzhou.aliyuncs.com/google_containers/busybox
+    command: ["/bin/sh"]
+    stdin: true
+    tty: true
+    imagePullPolicy: Always
+    volumeMounts:
+      - name: redis-persistent-storage
+        mountPath: /data
+      - name: redis-config
+        mountPath: /usr/local/etc/redis/
+  volumes:
+    - name: redis-persistent-storage
+      persistentVolumeClaim:
+        claimName: redis-pv-claim
+    - name: redis-config
+      configMap:
+        name: redis-config
+        key: redis.conf
+  restartPolicy: Never
