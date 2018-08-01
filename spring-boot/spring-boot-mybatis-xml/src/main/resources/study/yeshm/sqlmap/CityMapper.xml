@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study.yeshm.mapper.CityMapper">
+  <resultMap id="BaseResultMap" type="study.yeshm.domain.City">
+    <id column="city_id" jdbcType="INTEGER" property="cityId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    city_id, name, state, country
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from city
+    where city_id = #{cityId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from city
+    where city_id = #{cityId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="study.yeshm.domain.City">
+    insert into city (city_id, name, state, 
+      country)
+    values (#{cityId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="study.yeshm.domain.City">
+    insert into city
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="study.yeshm.domain.City">
+    update city
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where city_id = #{cityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="study.yeshm.domain.City">
+    update city
+    set name = #{name,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR}
+    where city_id = #{cityId,jdbcType=INTEGER}
+  </update>
+</mapper>

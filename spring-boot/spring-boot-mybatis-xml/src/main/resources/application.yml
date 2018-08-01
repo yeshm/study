@@ -1,0 +1,25 @@
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+
+mybatis:
+  typeAliasesPackage: study.yeshm.domain
+  mapperLocations: classpath:study/yeshm/sqlmap/*.xml
+
+---
+
+#开发配置
+spring:
+  profiles: dev
+
+  datasource:
+    schema: classpath:import.sql
+
+logging:
+  level:
+    root: INFO
+    study.yeshm.mapper: TRACE

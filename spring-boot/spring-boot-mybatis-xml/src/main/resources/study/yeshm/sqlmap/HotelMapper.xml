@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study.yeshm.mapper.HotelMapper">
+  <resultMap id="BaseResultMap" type="study.yeshm.domain.Hotel">
+    <id column="hotel_id" jdbcType="INTEGER" property="hotelId" />
+    <result column="city_id" jdbcType="INTEGER" property="cityId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="zip" jdbcType="VARCHAR" property="zip" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    hotel_id, city_id, name, address, zip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hotel
+    where hotel_id = #{hotelId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByCityId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from hotel where city_id = #{id}
+  </select>
+  <select id="selectByZip" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from hotel where zip = #{zip}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hotel
+    where hotel_id = #{hotelId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="study.yeshm.domain.Hotel">
+    insert into hotel (hotel_id, city_id, name, 
+      address, zip)
+    values (#{hotelId,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="study.yeshm.domain.Hotel">
+    insert into hotel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hotelId != null">
+        hotel_id,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="zip != null">
+        zip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hotelId != null">
+        #{hotelId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null">
+        #{zip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="study.yeshm.domain.Hotel">
+    update hotel
+    <set>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null">
+        zip = #{zip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hotel_id = #{hotelId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="study.yeshm.domain.Hotel">
+    update hotel
+    set city_id = #{cityId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      zip = #{zip,jdbcType=VARCHAR}
+    where hotel_id = #{hotelId,jdbcType=INTEGER}
+  </update>
+</mapper>
