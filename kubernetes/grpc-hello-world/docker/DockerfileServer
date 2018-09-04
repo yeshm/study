@@ -1,0 +1,9 @@
+FROM openjdk:8-jdk-alpine
+
+VOLUME /tmp
+
+COPY build/install/examples /
+
+EXPOSE 50051
+
+ENTRYPOINT ["bin/hello-world-server"]

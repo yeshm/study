@@ -5,5 +5,5 @@ metadata:
 spec:
   containers:
     - name: grpc-hello-world-client
-      image: yeshuangming/grpc-hello-world-client:0.0.2
+      image: yeshuangming/grpc-hello-world-client:0.0.1
   restartPolicy: Never
