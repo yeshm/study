@@ -1,0 +1,95 @@
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.15.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.5'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+def grpcVersion = '1.15.0'
+def springBootVersion = '1.5.15.RELEASE'
+
+repositories {
+    //maven { // The google mirror is less flaky than mavenCentral()
+    //    url "https://maven-central.storage-download.googleapis.com/repos/central/data/" }
+    mavenCentral()
+    mavenLocal()
+}
+
+apply plugin: 'com.google.protobuf'
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile 'org.springframework.boot:spring-boot-starter-web'
+
+    compile "org.lognet:grpc-spring-boot-starter:2.4.2-SNAPSHOT"
+
+    testCompile 'org.springframework.boot:spring-boot-starter-aop'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/protoGen'
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.5.1'
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+
+    generateProtoTasks {
+        ofSourceSet('main').each { task ->
+            task.builtins {
+                java{
+                    outputSubDir = 'protoGen'
+                }
+            }
+            task.plugins {
+                grpc {
+                    outputSubDir = 'protoGen'
+                }
+            }
+        }
+    }
+    generatedFilesBaseDir = "$projectDir/src/"
+}
+
+task cleanProtoGen{
+    doFirst{
+           delete("$projectDir/src/main/protoGen")
+    }
+}
+clean.dependsOn cleanProtoGen
+bootRepackage.enabled  =false
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+    }
+}
+
+task(runClient, dependsOn: 'classes', type: JavaExec) {
+    main = 'org.lognet.springboot.grpc.demo.HelloWorldClient'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+
+
+
+
