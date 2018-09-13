@@ -1,11 +1,11 @@
 apply plugin: 'java'
 
 def grpcVersion = '1.15.0'
-def springBootVersion = '1.5.15.RELEASE'
+def springBootVersion = '2.0.4.RELEASE'
 
 buildscript {
     ext {
-        springBootVersion = '1.5.15.RELEASE'
+        springBootVersion = '2.0.4.RELEASE'
     }
     repositories {
         //maven { // The google mirror is less flaky than mavenCentral()

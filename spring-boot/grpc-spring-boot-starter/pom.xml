@@ -10,7 +10,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <grpc.version>1.15.0</grpc.version>
-        <spring.boot.starter.version>1.5.15.RELEASE</spring.boot.starter.version>
+        <spring.boot.starter.version>2.0.4.RELEASE</spring.boot.starter.version>
         <lombok.version>1.16.10</lombok.version>
     </properties>
     <dependencies>
