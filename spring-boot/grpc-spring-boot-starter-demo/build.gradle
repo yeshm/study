@@ -1,7 +1,7 @@
 
 buildscript {
     ext {
-        springBootVersion = '1.5.15.RELEASE'
+        springBootVersion = '2.0.4.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -13,7 +13,7 @@ buildscript {
 }
 
 def grpcVersion = '1.15.0'
-def springBootVersion = '1.5.15.RELEASE'
+def springBootVersion = '2.0.4.RELEASE'
 
 repositories {
     //maven { // The google mirror is less flaky than mavenCentral()
@@ -22,8 +22,10 @@ repositories {
     mavenLocal()
 }
 
+apply plugin: 'java'
 apply plugin: 'com.google.protobuf'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 dependencies {
 
@@ -76,7 +78,7 @@ task cleanProtoGen{
     }
 }
 clean.dependsOn cleanProtoGen
-bootRepackage.enabled  =false
+bootJar.enabled  =false
 
 dependencyManagement {
     imports {

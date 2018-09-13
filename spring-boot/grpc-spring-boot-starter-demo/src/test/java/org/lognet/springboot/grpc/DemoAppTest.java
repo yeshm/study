@@ -91,7 +91,7 @@ public class DemoAppTest extends GrpcServerTestBase{
 
         @Test
     public void actuatorTest() throws ExecutionException, InterruptedException {
-        ResponseEntity<String> response = restTemplate.getForEntity("/env", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("/actuator/health", String.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
