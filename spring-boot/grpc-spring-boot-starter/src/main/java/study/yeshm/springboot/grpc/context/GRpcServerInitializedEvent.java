@@ -1,4 +1,4 @@
-package org.lognet.springboot.grpc.context;
+package study.yeshm.springboot.grpc.context;
 
 import io.grpc.Server;
 import org.springframework.context.ApplicationEvent;

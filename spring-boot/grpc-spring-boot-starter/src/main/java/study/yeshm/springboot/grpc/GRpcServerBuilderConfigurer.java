@@ -1,4 +1,4 @@
-package org.lognet.springboot.grpc;
+package study.yeshm.springboot.grpc;
 
 import io.grpc.ServerBuilder;
 

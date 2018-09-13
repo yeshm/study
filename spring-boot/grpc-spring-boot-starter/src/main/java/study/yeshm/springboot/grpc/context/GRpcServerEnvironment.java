@@ -1,4 +1,4 @@
-package org.lognet.springboot.grpc.context;
+package study.yeshm.springboot.grpc.context;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
@@ -9,7 +9,7 @@ import org.springframework.util.SocketUtils;
 
 import java.util.Properties;
 
-import static org.lognet.springboot.grpc.autoconfigure.GRpcServerProperties.DEFAULT_GRPC_PORT;
+import static study.yeshm.springboot.grpc.autoconfigure.GRpcServerProperties.DEFAULT_GRPC_PORT;
 
 public class GRpcServerEnvironment implements EnvironmentPostProcessor {
 

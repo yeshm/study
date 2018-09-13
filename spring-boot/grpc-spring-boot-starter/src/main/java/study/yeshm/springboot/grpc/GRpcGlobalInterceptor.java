@@ -1,4 +1,4 @@
-package org.lognet.springboot.grpc;
+package study.yeshm.springboot.grpc;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -1,4 +1,4 @@
-package org.lognet.springboot.grpc.autoconfigure;
+package study.yeshm.springboot.grpc.autoconfigure;
 
 import lombok.Getter;
 import lombok.Setter;

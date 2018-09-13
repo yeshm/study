@@ -1,12 +1,12 @@
-package org.lognet.springboot.grpc;
+package study.yeshm.springboot.grpc;
 
 import io.grpc.*;
 import io.grpc.health.v1.HealthCheckResponse;
 import io.grpc.protobuf.services.ProtoReflectionService;
 import io.grpc.services.HealthStatusManager;
 import lombok.extern.slf4j.Slf4j;
-import org.lognet.springboot.grpc.autoconfigure.GRpcServerProperties;
-import org.lognet.springboot.grpc.context.GRpcServerInitializedEvent;
+import study.yeshm.springboot.grpc.autoconfigure.GRpcServerProperties;
+import study.yeshm.springboot.grpc.context.GRpcServerInitializedEvent;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;

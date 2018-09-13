@@ -1,12 +1,12 @@
-package org.lognet.springboot.grpc.autoconfigure;
+package study.yeshm.springboot.grpc.autoconfigure;
 
 import io.grpc.ServerBuilder;
 import io.grpc.inprocess.InProcessServerBuilder;
 import io.grpc.services.HealthStatusManager;
-import org.lognet.springboot.grpc.GRpcServerBuilderConfigurer;
-import org.lognet.springboot.grpc.GRpcServerRunner;
-import org.lognet.springboot.grpc.GRpcService;
-import org.lognet.springboot.grpc.context.LocalRunningGrpcPort;
+import study.yeshm.springboot.grpc.GRpcServerBuilderConfigurer;
+import study.yeshm.springboot.grpc.GRpcServerRunner;
+import study.yeshm.springboot.grpc.GRpcService;
+import study.yeshm.springboot.grpc.context.LocalRunningGrpcPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
