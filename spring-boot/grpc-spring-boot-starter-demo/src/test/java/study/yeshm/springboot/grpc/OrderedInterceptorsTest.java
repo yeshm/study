@@ -1,4 +1,4 @@
-package org.lognet.springboot.grpc;
+package study.yeshm.springboot.grpc;
 
 import io.grpc.Metadata;
 import io.grpc.ServerCall;
@@ -8,9 +8,10 @@ import io.grpc.ServerInterceptor;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.lognet.springboot.grpc.OrderedInterceptorsTest.TheConfiguration;
-import org.lognet.springboot.grpc.context.LocalRunningGrpcPort;
-import org.lognet.springboot.grpc.demo.DemoApp;
+import study.yeshm.springboot.grpc.GRpcGlobalInterceptor;
+import study.yeshm.springboot.grpc.OrderedInterceptorsTest.TheConfiguration;
+import study.yeshm.springboot.grpc.context.LocalRunningGrpcPort;
+import study.yeshm.springboot.grpc.demo.DemoApp;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.context.annotation.Bean;

@@ -1,11 +1,11 @@
-package org.lognet.springboot.grpc.demo;
+package study.yeshm.springboot.grpc.demo;
 
 import io.grpc.Metadata;
 import io.grpc.ServerCall;
 import io.grpc.ServerCallHandler;
 import io.grpc.ServerInterceptor;
 import lombok.extern.slf4j.Slf4j;
-import org.lognet.springboot.grpc.GRpcGlobalInterceptor;
+import study.yeshm.springboot.grpc.GRpcGlobalInterceptor;
 import org.springframework.stereotype.Component;
 
 /**

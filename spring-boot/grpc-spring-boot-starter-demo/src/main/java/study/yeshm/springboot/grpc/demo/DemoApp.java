@@ -1,21 +1,18 @@
-package org.lognet.springboot.grpc.demo;
+package study.yeshm.springboot.grpc.demo;
 
 
-import io.grpc.examples.CalculatorGrpc;
-import io.grpc.examples.CalculatorOuterClass;
-import org.lognet.springboot.grpc.GRpcService;
+import study.yeshm.grpc.examples.CalculatorGrpc;
+import study.yeshm.grpc.examples.CalculatorOuterClass;
+import study.yeshm.springboot.grpc.GRpcService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import io.grpc.examples.GreeterGrpc;
-import io.grpc.examples.GreeterOuterClass;
 import io.grpc.stub.StreamObserver;
 
 /**
  * Created by alexf on 28-Jan-16.
  */
-
 
 @SpringBootApplication
 public class DemoApp {

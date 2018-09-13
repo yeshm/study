@@ -32,7 +32,7 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile 'org.springframework.boot:spring-boot-starter-web'
 
-    compile "org.lognet:grpc-spring-boot-starter:2.4.2-SNAPSHOT"
+    compile "study.yeshm:grpc-spring-boot-starter:2.4.2-SNAPSHOT"
 
     testCompile 'org.springframework.boot:spring-boot-starter-aop'
     testCompile('org.springframework.boot:spring-boot-starter-test')
@@ -87,7 +87,7 @@ dependencyManagement {
 }
 
 task(runClient, dependsOn: 'classes', type: JavaExec) {
-    main = 'org.lognet.springboot.grpc.demo.HelloWorldClient'
+    main = 'study.yeshm.springboot.grpc.demo.HelloWorldClient'
     classpath = sourceSets.main.runtimeClasspath
 }
 

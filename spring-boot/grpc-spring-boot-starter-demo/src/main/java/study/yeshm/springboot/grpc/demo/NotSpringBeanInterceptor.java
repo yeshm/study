@@ -1,4 +1,4 @@
-package org.lognet.springboot.grpc.demo;
+package study.yeshm.springboot.grpc.demo;
 
 import io.grpc.Metadata;
 import io.grpc.ServerCall;

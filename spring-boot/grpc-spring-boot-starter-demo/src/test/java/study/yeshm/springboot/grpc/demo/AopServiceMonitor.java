@@ -1,8 +1,7 @@
-package org.lognet.springboot.grpc.demo;
+package study.yeshm.springboot.grpc.demo;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.context.annotation.Profile;
@@ -21,14 +20,14 @@ public class AopServiceMonitor {
     public AopServiceMonitor() {
     }
 
-    //@AfterReturning("execution(* org.lognet..*Service.*(..))")
-    @After("execution(* org.lognet..*Service.*(..))")
+    //@AfterReturning("execution(* study.yeshm..*Service.*(..))")
+    @After("execution(* study.yeshm..*Service.*(..))")
     public void afterLogServiceAccess( ) {
 
         log.info("Hi from AOP. - after");
     }
 
-    @Before("execution(* org.lognet..*Service.*(..))")
+    @Before("execution(* study.yeshm..*Service.*(..))")
     public void beforeLogServiceAccess( ) {
         log.info("Hi from AOP. - before");
     }

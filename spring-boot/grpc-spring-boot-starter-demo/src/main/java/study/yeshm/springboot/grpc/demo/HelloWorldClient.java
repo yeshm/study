@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-package org.lognet.springboot.grpc.demo;
+package study.yeshm.springboot.grpc.demo;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
-import io.grpc.examples.GreeterGrpc;
-import io.grpc.examples.GreeterOuterClass;
+import study.yeshm.grpc.examples.GreeterGrpc;
+import study.yeshm.grpc.examples.GreeterOuterClass;
 
-import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;

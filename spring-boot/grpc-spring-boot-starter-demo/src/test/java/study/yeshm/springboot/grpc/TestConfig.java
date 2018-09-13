@@ -1,6 +1,8 @@
-package org.lognet.springboot.grpc;
+package study.yeshm.springboot.grpc;
 
 import io.grpc.*;
+import study.yeshm.springboot.grpc.GRpcGlobalInterceptor;
+import study.yeshm.springboot.grpc.GRpcServerBuilderConfigurer;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.springframework.context.annotation.Bean;

@@ -1,14 +1,10 @@
-package org.lognet.springboot.grpc.demo;
+package study.yeshm.springboot.grpc.demo;
 
-import io.grpc.examples.CalculatorGrpc;
-import io.grpc.examples.CalculatorOuterClass;
 import lombok.extern.slf4j.Slf4j;
-import org.lognet.springboot.grpc.GRpcService;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import study.yeshm.springboot.grpc.GRpcService;
 
-import io.grpc.examples.GreeterGrpc;
-import io.grpc.examples.GreeterOuterClass;
+import study.yeshm.grpc.examples.GreeterGrpc;
+import study.yeshm.grpc.examples.GreeterOuterClass;
 import io.grpc.stub.StreamObserver;
 @Slf4j
 @GRpcService(interceptors = { LogInterceptor.class })

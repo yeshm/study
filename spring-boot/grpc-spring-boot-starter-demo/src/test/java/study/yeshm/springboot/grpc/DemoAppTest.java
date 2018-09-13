@@ -1,10 +1,10 @@
-package org.lognet.springboot.grpc;
+package study.yeshm.springboot.grpc;
 
 import io.grpc.ServerInterceptor;
-import io.grpc.examples.CalculatorGrpc;
-import io.grpc.examples.CalculatorOuterClass;
-import io.grpc.examples.GreeterGrpc;
-import io.grpc.examples.GreeterOuterClass;
+import study.yeshm.grpc.examples.CalculatorGrpc;
+import study.yeshm.grpc.examples.CalculatorOuterClass;
+import study.yeshm.grpc.examples.GreeterGrpc;
+import study.yeshm.grpc.examples.GreeterOuterClass;
 import io.grpc.health.v1.HealthCheckRequest;
 import io.grpc.health.v1.HealthCheckResponse;
 import io.grpc.health.v1.HealthGrpc;
@@ -17,7 +17,8 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.lognet.springboot.grpc.demo.DemoApp;
+import study.yeshm.springboot.grpc.GRpcServerBuilderConfigurer;
+import study.yeshm.springboot.grpc.demo.DemoApp;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

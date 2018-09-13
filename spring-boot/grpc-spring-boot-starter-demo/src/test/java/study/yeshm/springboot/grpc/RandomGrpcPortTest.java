@@ -1,9 +1,9 @@
-package org.lognet.springboot.grpc;
+package study.yeshm.springboot.grpc;
 
 import org.junit.Assert;
 import org.junit.runner.RunWith;
-import org.lognet.springboot.grpc.context.LocalRunningGrpcPort;
-import org.lognet.springboot.grpc.demo.DemoApp;
+import study.yeshm.springboot.grpc.context.LocalRunningGrpcPort;
+import study.yeshm.springboot.grpc.demo.DemoApp;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;

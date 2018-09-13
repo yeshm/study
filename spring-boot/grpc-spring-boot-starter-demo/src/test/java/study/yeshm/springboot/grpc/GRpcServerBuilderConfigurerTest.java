@@ -1,13 +1,14 @@
-package org.lognet.springboot.grpc;
+package study.yeshm.springboot.grpc;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import io.grpc.examples.CalculatorGrpc;
-import io.grpc.examples.CalculatorOuterClass;
+import study.yeshm.grpc.examples.CalculatorGrpc;
+import study.yeshm.grpc.examples.CalculatorOuterClass;
 import org.hamcrest.CoreMatchers;
 import org.junit.*;
 import org.junit.runner.RunWith;
-import org.lognet.springboot.grpc.demo.DemoApp;
+import study.yeshm.springboot.grpc.GRpcServerBuilderConfigurer;
+import study.yeshm.springboot.grpc.demo.DemoApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.rule.OutputCapture;
@@ -16,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.ExecutionException;
 
-import static org.lognet.springboot.grpc.TestConfig.CUSTOM_EXECUTOR_MESSAGE;
+import static study.yeshm.springboot.grpc.TestConfig.CUSTOM_EXECUTOR_MESSAGE;
 
 
 /**

@@ -1,15 +1,16 @@
-package org.lognet.springboot.grpc;
+package study.yeshm.springboot.grpc;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import io.grpc.examples.GreeterGrpc;
-import io.grpc.examples.GreeterOuterClass;
+import study.yeshm.grpc.examples.GreeterGrpc;
+import study.yeshm.grpc.examples.GreeterOuterClass;
 import io.grpc.inprocess.InProcessChannelBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.lognet.springboot.grpc.autoconfigure.GRpcServerProperties;
-import org.lognet.springboot.grpc.context.LocalRunningGrpcPort;
+import study.yeshm.springboot.grpc.GRpcServerRunner;
+import study.yeshm.springboot.grpc.autoconfigure.GRpcServerProperties;
+import study.yeshm.springboot.grpc.context.LocalRunningGrpcPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
