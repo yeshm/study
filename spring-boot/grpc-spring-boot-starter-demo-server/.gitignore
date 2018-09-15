@@ -132,4 +132,5 @@ zz_generated_*_test.go
 gradle
 .gradle
 
+/build
 /out
