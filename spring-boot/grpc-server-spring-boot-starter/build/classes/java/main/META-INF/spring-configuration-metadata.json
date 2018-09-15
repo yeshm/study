@@ -1,0 +1,39 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "org.lognet.springboot.grpc.autoconfigure.GRpcServerProperties",
+      "name": "grpc",
+      "type": "org.lognet.springboot.grpc.autoconfigure.GRpcServerProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "org.lognet.springboot.grpc.autoconfigure.GRpcServerProperties",
+      "defaultValue": false,
+      "name": "grpc.enable-reflection",
+      "description": "Enables server reflection using <a href=\"https:\/\/github.com\/grpc\/grpc-java\/blob\/master\/documentation\/server-reflection-tutorial.md\">ProtoReflectionService<\/a>.\n Available only from gRPC 1.3 or higher.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "org.lognet.springboot.grpc.autoconfigure.GRpcServerProperties",
+      "defaultValue": true,
+      "name": "grpc.enabled",
+      "description": "Enables the embedded grpc server.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "org.lognet.springboot.grpc.autoconfigure.GRpcServerProperties",
+      "name": "grpc.in-process-server-name",
+      "description": "In process server name.\n If  the value is not empty, the embedded in-process server will be created and started.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.lognet.springboot.grpc.autoconfigure.GRpcServerProperties",
+      "defaultValue": 6565,
+      "name": "grpc.port",
+      "description": "gRPC server port",
+      "type": "java.lang.Integer"
+    }
+  ]
+}
