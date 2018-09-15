@@ -1,4 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-study.yeshm.springboot.grpc.autoconfigure.GRpcAutoConfiguration
-org.springframework.boot.env.EnvironmentPostProcessor=\
-study.yeshm.springboot.grpc.context.GRpcServerEnvironment
