@@ -2,15 +2,12 @@ syntax = "proto3";
 
 option java_package = "study.yeshm.grpc.examples";
 
-
-
 // The greeter service definition.
 service Greeter {
     // Sends a greeting
-    rpc SayHello ( HelloRequest) returns (  HelloReply) {}
-
+    rpc SayHello (HelloRequest) returns (HelloReply) {
+    }
 }
-
 
 // The request message containing the user's name.
 message HelloRequest {
@@ -21,5 +18,3 @@ message HelloRequest {
 message HelloReply {
     string message = 1;
 }
-
-

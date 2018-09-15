@@ -82,12 +82,11 @@ public class DemoAppTest extends GrpcServerTestBase{
         Mockito.verify(globalInterceptor,Mockito.times(2)).interceptCall(Mockito.any(),Mockito.any(),Mockito.any());
 
 
-        // log interceptor should be invoked only on GreeterService and not CalculatorService
         outputCapture.expect(containsString(GreeterGrpc.getSayHelloMethod().getFullMethodName()));
-        outputCapture.expect(not(containsString(CalculatorGrpc.getCalculateMethod().getFullMethodName())));
+        outputCapture.expect(containsString(CalculatorGrpc.getCalculateMethod().getFullMethodName()));
 
-
-        outputCapture.expect(containsString("I'm not Spring bean interceptor and still being invoked..."));
+        outputCapture.expect(containsString("GrpcInterceptor begin..."));
+        outputCapture.expect(containsString("GrpcInterceptor end..."));
     }
 
         @Test

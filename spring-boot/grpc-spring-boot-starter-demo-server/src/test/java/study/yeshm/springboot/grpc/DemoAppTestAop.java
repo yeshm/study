@@ -3,19 +3,19 @@ package study.yeshm.springboot.grpc;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import study.yeshm.springboot.grpc.demo.DemoApp;
-import study.yeshm.springboot.grpc.demo.grpc.GreeterService;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.rule.OutputCapture;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import study.yeshm.springboot.grpc.demo.DemoApp;
+import study.yeshm.springboot.grpc.demo.grpc.CalculatorGrpcService;
+import study.yeshm.springboot.grpc.demo.grpc.GreeterGrpcService;
 
 import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
@@ -23,18 +23,18 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
  * Created by alexf on 28-Jan-16.
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {DemoApp.class },webEnvironment = NONE
-        ,properties = {"spring.aop.proxy-target-class=true","grpc.port=6568"}
+@SpringBootTest(classes = {DemoApp.class}, webEnvironment = NONE
+        , properties = {"spring.aop.proxy-target-class=true", "grpc.port=6568"}
 )
 @ActiveProfiles(profiles = {"aopTest"})
-public class DemoAppTestAop extends GrpcServerTestBase{
+public class DemoAppTestAop extends GrpcServerTestBase {
 
 
     @Autowired
-    private GreeterService greeterService;
+    private GreeterGrpcService greeterGrpcService;
 
     @Autowired
-    private DemoApp.CalculatorService calculatorService;
+    private CalculatorGrpcService calculatorGrpcService;
 
     @Rule
     public OutputCapture outputCapture = new OutputCapture();
@@ -47,12 +47,9 @@ public class DemoAppTestAop extends GrpcServerTestBase{
     @Test
     public void simpleAopTest() throws ExecutionException, InterruptedException {
 
-        assertTrue(AopUtils.isAopProxy(greeterService));
-        assertTrue(AopUtils.isAopProxy(calculatorService));
+        assertTrue(AopUtils.isAopProxy(greeterGrpcService));
+        assertTrue(AopUtils.isAopProxy(calculatorGrpcService));
 
     }
-
-
-
 
 }
