@@ -13,6 +13,7 @@ buildscript {
 }
 
 def grpcVersion = '1.15.0'
+def protocVersion = '3.5.1'
 def springBootVersion = '2.0.4.RELEASE'
 
 repositories {
@@ -37,48 +38,28 @@ dependencies {
     testCompile 'org.springframework.boot:spring-boot-starter-aop'
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+// Inform IDEs like IntelliJ IDEA, Eclipse or NetBeans about the generated code.
 sourceSets {
     main {
         java {
-            srcDir 'src/main/protoGen'
+            srcDirs 'build/generated/source/proto/main/grpc'
+            srcDirs 'build/generated/source/proto/main/java'
         }
     }
 }
 
 protobuf {
-    protoc {
-        artifact = 'com.google.protobuf:protoc:3.5.1'
-    }
+    protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
     plugins {
-        grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
-        }
+        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
     }
-
     generateProtoTasks {
-        ofSourceSet('main').each { task ->
-            task.builtins {
-                java{
-                    outputSubDir = 'protoGen'
-                }
-            }
-            task.plugins {
-                grpc {
-                    outputSubDir = 'protoGen'
-                }
-            }
-        }
+        all()*.plugins { grpc {} }
     }
-    generatedFilesBaseDir = "$projectDir/src/"
 }
 
-task cleanProtoGen{
-    doFirst{
-           delete("$projectDir/src/main/protoGen")
-    }
-}
-clean.dependsOn cleanProtoGen
-bootJar.enabled  =false
+//bootJar.enabled  =false
 
 dependencyManagement {
     imports {
@@ -90,8 +71,3 @@ task(runClient, dependsOn: 'classes', type: JavaExec) {
     main = 'study.yeshm.springboot.grpc.demo.HelloWorldClient'
     classpath = sourceSets.main.runtimeClasspath
 }
-
-
-
-
-

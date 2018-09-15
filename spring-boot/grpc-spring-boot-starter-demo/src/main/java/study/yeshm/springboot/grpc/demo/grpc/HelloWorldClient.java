@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package study.yeshm.springboot.grpc.demo;
+package study.yeshm.springboot.grpc.demo.grpc;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -73,7 +73,7 @@ public class HelloWorldClient {
     HelloWorldClient client = new HelloWorldClient("grpc-hello-world-server", 6565);
     try {
       /* Access a service running on the local machine on port 50051 */
-      String user = "world";
+      String user = "World";
       if (args.length > 0) {
         user = args[0]; /* Use the arg as the name to greet if provided */
       }

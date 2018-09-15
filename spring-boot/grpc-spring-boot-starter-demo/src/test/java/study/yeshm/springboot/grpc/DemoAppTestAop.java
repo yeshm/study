@@ -4,7 +4,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import study.yeshm.springboot.grpc.demo.DemoApp;
-import study.yeshm.springboot.grpc.demo.GreeterService;
+import study.yeshm.springboot.grpc.demo.grpc.GreeterService;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

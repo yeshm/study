@@ -1,4 +1,4 @@
-package study.yeshm.springboot.grpc.demo;
+package study.yeshm.springboot.grpc.demo.grpc;
 
 import lombok.extern.slf4j.Slf4j;
 import study.yeshm.springboot.grpc.GRpcService;

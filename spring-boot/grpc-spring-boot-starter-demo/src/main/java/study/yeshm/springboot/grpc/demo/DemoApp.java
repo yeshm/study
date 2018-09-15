@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import io.grpc.stub.StreamObserver;
+import study.yeshm.springboot.grpc.demo.grpc.GreeterService;
+import study.yeshm.springboot.grpc.demo.grpc.NotSpringBeanInterceptor;
 
 /**
  * Created by alexf on 28-Jan-16.
