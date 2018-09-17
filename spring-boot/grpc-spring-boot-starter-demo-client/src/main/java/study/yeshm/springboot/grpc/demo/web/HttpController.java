@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * @author yeshm
+ */
 @RestController
 @RequestMapping(value = {"/http"})
 public class HttpController {
@@ -17,7 +20,7 @@ public class HttpController {
     private String url = "http://localhost:8080/";
 
     @RequestMapping(value = {"/greet"})
-    public String greet() throws InterruptedException {
+    public String greet() {
         MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
         requestEntity.add("user", "World");
 
@@ -27,7 +30,7 @@ public class HttpController {
     }
 
     @RequestMapping(value = {"/calculate"})
-    public String calculate() throws InterruptedException {
+    public String calculate() {
         MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
         requestEntity.add("number1", "1");
         requestEntity.add("number2", "2");

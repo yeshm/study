@@ -7,22 +7,27 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Created by liuxu on 2017/12/22.
  * RestTemplate配置类
+ *
+ * @author yeshm
  */
 @Configuration
 public class RestTemplateConfig {
 
     @Bean
-    public RestTemplate restTemplate(ClientHttpRequestFactory factory){
+    public RestTemplate restTemplate(ClientHttpRequestFactory factory) {
         return new RestTemplate(factory);
     }
 
     @Bean
-    public ClientHttpRequestFactory simpleClientHttpRequestFactory(){
+    public ClientHttpRequestFactory simpleClientHttpRequestFactory() {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-        factory.setReadTimeout(5000);//单位为ms
-        factory.setConnectTimeout(5000);//单位为ms
+
+        //单位为ms
+        factory.setReadTimeout(5000);
+        //单位为ms
+        factory.setConnectTimeout(5000);
+
         return factory;
     }
 }

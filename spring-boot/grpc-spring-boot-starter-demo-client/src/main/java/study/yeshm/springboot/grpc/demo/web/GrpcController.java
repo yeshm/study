@@ -1,46 +1,49 @@
 package study.yeshm.springboot.grpc.demo.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import study.yeshm.springboot.grpc.demo.grpc.CalculatorGrpcClient;
-import study.yeshm.springboot.grpc.demo.grpc.GreeterGrpcClient;
+import study.yeshm.grpc.examples.CalculatorGrpc;
+import study.yeshm.grpc.examples.CalculatorOuterClass;
+import study.yeshm.grpc.examples.GreeterGrpc;
+import study.yeshm.grpc.examples.GreeterOuterClass;
 
 @RestController
 @RequestMapping(value = {"/grpc"})
 public class GrpcController {
 
+    @Autowired
+    private GreeterGrpc.GreeterBlockingStub greeterBlockingStub;
+
+    @Autowired
+    private CalculatorGrpc.CalculatorBlockingStub calculatorBlockingStub;
+
     @RequestMapping(value = {"/greet"})
-    public String greet() throws InterruptedException {
-        GreeterGrpcClient client = GreeterGrpcClient.getInstance("grpc-hello-world-server", 50051);
-        String response;
+    public String greet() {
+        GreeterOuterClass.HelloReply response;
 
-        try {
-            /* Access a service running on the local machine on port 50051 */
-            String user = "World";
-            response = client.greet(user);
+        String user = "World";
+        GreeterOuterClass.HelloRequest request = GreeterOuterClass.HelloRequest.newBuilder()
+                .setName(user)
+                .build();
 
-        } finally {
-//            System.out.printf("shutting down client...");
-//            client.shutdown();
-        }
+        response = greeterBlockingStub.sayHello(request);
 
-        return response;
+        return response.getMessage();
     }
 
     @RequestMapping(value = {"/calculate"})
-    public double calculate() throws InterruptedException {
-        CalculatorGrpcClient client = CalculatorGrpcClient.getInstance("grpc-hello-world-server", 50051);
-        double response;
+    public double calculate() {
+        CalculatorOuterClass.CalculatorResponse response;
 
-        try {
-            /* Access a service running on the local machine on port 50051 */
-            response = client.calculate();
+        CalculatorOuterClass.CalculatorRequest request = CalculatorOuterClass.CalculatorRequest.newBuilder()
+                .setNumber1(1)
+                .setNumber2(2)
+                .setOperation(CalculatorOuterClass.CalculatorRequest.OperationType.ADD)
+                .build();
 
-        } finally {
-//            System.out.printf("shutting down client...");
-//            client.shutdown();
-        }
+        response = calculatorBlockingStub.calculate(request);
 
-        return response;
+        return response.getResult();
     }
 }
