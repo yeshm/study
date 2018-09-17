@@ -24,6 +24,6 @@ public class DefaultGrpcPortTest extends GrpcServerTestBase {
     @Override
     protected void beforeGreeting() {
         Assert.assertEquals(0, grpcProperties.getServer().getPort());
-        Assert.assertEquals(GrpcProperties.ServerProperties.DEFAULT_GRPC_PORT, runningPort);
+        Assert.assertEquals(GrpcProperties.DEFAULT_GRPC_PORT, runningPort);
     }
 }
