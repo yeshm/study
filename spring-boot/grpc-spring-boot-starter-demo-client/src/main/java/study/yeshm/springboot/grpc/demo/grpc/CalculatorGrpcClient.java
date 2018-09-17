@@ -74,7 +74,7 @@ public class CalculatorGrpcClient {
     }
 
     public static void main(String[] args) throws Exception {
-        CalculatorGrpcClient client = CalculatorGrpcClient.getInstance("grpc-hello-world-server", 6565);
+        CalculatorGrpcClient client = CalculatorGrpcClient.getInstance("grpc-hello-world-server", 50051);
         try {
             double result = client.calculate();
 

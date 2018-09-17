@@ -80,7 +80,7 @@ public class GreeterGrpcClient {
    * greeting.
    */
   public static void main(String[] args) throws Exception {
-    GreeterGrpcClient client = new GreeterGrpcClient("grpc-hello-world-server", 6565);
+    GreeterGrpcClient client = new GreeterGrpcClient("grpc-hello-world-server", 50051);
     try {
       /* Access a service running on the local machine on port 50051 */
       String user = "world";

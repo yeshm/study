@@ -11,7 +11,7 @@ public class GrpcController {
 
     @RequestMapping(value = {"/greet"})
     public String greet() throws InterruptedException {
-        GreeterGrpcClient client = GreeterGrpcClient.getInstance("grpc-hello-world-server", 6565);
+        GreeterGrpcClient client = GreeterGrpcClient.getInstance("grpc-hello-world-server", 50051);
         String response;
 
         try {
@@ -29,7 +29,7 @@ public class GrpcController {
 
     @RequestMapping(value = {"/calculate"})
     public double calculate() throws InterruptedException {
-        CalculatorGrpcClient client = CalculatorGrpcClient.getInstance("grpc-hello-world-server", 6565);
+        CalculatorGrpcClient client = CalculatorGrpcClient.getInstance("grpc-hello-world-server", 50051);
         double response;
 
         try {
