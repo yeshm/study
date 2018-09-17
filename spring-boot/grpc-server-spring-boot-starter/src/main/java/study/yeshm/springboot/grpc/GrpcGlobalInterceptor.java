@@ -9,11 +9,12 @@ import java.lang.annotation.Target;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by jamessmith on 9/7/16.
+ * Grpc全局拦截器注解
  */
-@Target({ElementType.TYPE,ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Component
-public @interface GRpcGlobalInterceptor {
+public @interface GrpcGlobalInterceptor {
+
 }
