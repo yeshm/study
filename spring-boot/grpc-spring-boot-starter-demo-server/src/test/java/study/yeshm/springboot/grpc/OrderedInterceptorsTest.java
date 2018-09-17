@@ -8,7 +8,7 @@ import io.grpc.ServerInterceptor;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import study.yeshm.springboot.grpc.GRpcGlobalInterceptor;
+import study.yeshm.springboot.grpc.GrpcGlobalInterceptor;
 import study.yeshm.springboot.grpc.OrderedInterceptorsTest.TheConfiguration;
 import study.yeshm.springboot.grpc.context.LocalRunningGrpcPort;
 import study.yeshm.springboot.grpc.demo.DemoApp;
@@ -31,7 +31,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {DemoApp.class, TheConfiguration.class},
-    webEnvironment = WebEnvironment.NONE, properties = "grpc.port=7778")
+    webEnvironment = WebEnvironment.NONE, properties = "grpc.server.port=7778")
 public class OrderedInterceptorsTest extends GrpcServerTestBase{
 
   @LocalRunningGrpcPort
@@ -62,7 +62,7 @@ public class OrderedInterceptorsTest extends GrpcServerTestBase{
   @Configuration
   public static class TheConfiguration {
 
-    @GRpcGlobalInterceptor
+    @GrpcGlobalInterceptor
     @Order(2)
     static class SecondInterceptor implements ServerInterceptor {
 
@@ -74,7 +74,7 @@ public class OrderedInterceptorsTest extends GrpcServerTestBase{
       }
     }
 
-    @GRpcGlobalInterceptor
+    @GrpcGlobalInterceptor
     @Order(4)
     static class FourthInterceptor implements ServerInterceptor {
 
@@ -86,7 +86,7 @@ public class OrderedInterceptorsTest extends GrpcServerTestBase{
       }
     }
 
-    @GRpcGlobalInterceptor
+    @GrpcGlobalInterceptor
     @Order(3)
     static class ThirdInterceptor implements ServerInterceptor {
 
@@ -98,7 +98,7 @@ public class OrderedInterceptorsTest extends GrpcServerTestBase{
       }
     }
 
-    @GRpcGlobalInterceptor
+    @GrpcGlobalInterceptor
     @Order(1)
     static class FirstInterceptor implements ServerInterceptor {
 
@@ -110,7 +110,7 @@ public class OrderedInterceptorsTest extends GrpcServerTestBase{
       }
     }
 
-    @GRpcGlobalInterceptor
+    @GrpcGlobalInterceptor
     @Order // no value means lowest priority amongst all @Ordered, but higher priority than interceptors without the annotation
     static class DefaultOrderedInterceptor implements ServerInterceptor {
 
@@ -123,7 +123,7 @@ public class OrderedInterceptorsTest extends GrpcServerTestBase{
     }
 
     // interceptors without any annotation will always be executed last, losing to any defined @Order
-    @GRpcGlobalInterceptor
+    @GrpcGlobalInterceptor
     static class UnorderedInterceptor implements ServerInterceptor {
 
       @Override
@@ -135,7 +135,7 @@ public class OrderedInterceptorsTest extends GrpcServerTestBase{
     }
 
     @Bean
-    @GRpcGlobalInterceptor
+    @GrpcGlobalInterceptor
     public  ServerInterceptor myInterceptor(){
       return new MyInterceptor();
     }

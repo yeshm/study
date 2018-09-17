@@ -1,7 +1,7 @@
-package study.yeshm.springboot.grpc.demo.grpc;
+package study.yeshm.springboot.grpc.demo.grpc.service;
 
 import lombok.extern.slf4j.Slf4j;
-import study.yeshm.springboot.grpc.GRpcService;
+import study.yeshm.springboot.grpc.GrpcService;
 
 import study.yeshm.grpc.examples.GreeterGrpc;
 import study.yeshm.grpc.examples.GreeterOuterClass;
@@ -11,7 +11,7 @@ import io.grpc.stub.StreamObserver;
  * @author yeshm
  */
 @Slf4j
-@GRpcService(interceptors = {GrpcInterceptor.class})
+@GrpcService
 public class GreeterGrpcService extends GreeterGrpc.GreeterImplBase {
 
     public GreeterGrpcService() {

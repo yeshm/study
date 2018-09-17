@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {DemoApp.class}, webEnvironment = NONE, properties = "grpc.port=0")
+@SpringBootTest(classes = {DemoApp.class}, webEnvironment = NONE, properties = "grpc.server.port=0")
 public class RandomGrpcPortTest extends GrpcServerTestBase {
 
     @Value("${local.grpc.port}")
@@ -27,7 +27,7 @@ public class RandomGrpcPortTest extends GrpcServerTestBase {
 
     @Override
     protected void beforeGreeting() {
-        Assert.assertEquals(0,gRpcServerProperties.getPort());
+        Assert.assertEquals(0, grpcProperties.getServer().getPort());
         Assert.assertEquals(port,runningPort);
     }
 }

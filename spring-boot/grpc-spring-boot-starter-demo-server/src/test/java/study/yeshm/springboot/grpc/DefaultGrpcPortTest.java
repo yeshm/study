@@ -2,7 +2,7 @@ package study.yeshm.springboot.grpc;
 
 import org.junit.Assert;
 import org.junit.runner.RunWith;
-import study.yeshm.springboot.grpc.autoconfigure.GRpcServerProperties;
+import study.yeshm.springboot.grpc.autoconfigure.GrpcProperties;
 import study.yeshm.springboot.grpc.context.LocalRunningGrpcPort;
 import study.yeshm.springboot.grpc.demo.DemoApp;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +23,7 @@ public class DefaultGrpcPortTest extends GrpcServerTestBase {
 
     @Override
     protected void beforeGreeting() {
-        Assert.assertEquals(0, gRpcServerProperties.getPort());
-        Assert.assertEquals(GRpcServerProperties.DEFAULT_GRPC_PORT, runningPort);
+        Assert.assertEquals(0, grpcProperties.getServer().getPort());
+        Assert.assertEquals(GrpcProperties.ServerProperties.DEFAULT_GRPC_PORT, runningPort);
     }
 }

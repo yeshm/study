@@ -1,4 +1,4 @@
-package study.yeshm.springboot.grpc.demo.grpc;
+package study.yeshm.springboot.grpc.demo.grpc.interceptor;
 
 import io.grpc.Metadata;
 import io.grpc.ServerCall;
@@ -7,10 +7,12 @@ import io.grpc.ServerInterceptor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * 局部拦截器，需要在GrpcService配置
+ *
  * @author yeshm
  */
 @Slf4j
-public class GrpcInterceptor implements ServerInterceptor {
+public class RegionalGrpcInterceptor implements ServerInterceptor {
 
     @Override
     public <ReqT, RespT> ServerCall.Listener<ReqT> interceptCall(
@@ -18,7 +20,7 @@ public class GrpcInterceptor implements ServerInterceptor {
             Metadata headers,
             ServerCallHandler<ReqT, RespT> next) {
 
-        log.info("GrpcInterceptor begin...");
+        log.info("RegionalGrpcInterceptor begin...");
         log.info("grpc method:{}", call.getMethodDescriptor().getFullMethodName());
         log.info("grpc headers key:");
 
@@ -26,7 +28,7 @@ public class GrpcInterceptor implements ServerInterceptor {
             log.info("  " + key);
         }
 
-        log.info("GrpcInterceptor end...");
+        log.info("RegionalGrpcInterceptor end...");
 
         return next.startCall(call, headers);
     }

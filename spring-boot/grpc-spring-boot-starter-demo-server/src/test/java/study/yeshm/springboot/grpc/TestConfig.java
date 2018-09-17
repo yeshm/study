@@ -1,8 +1,8 @@
 package study.yeshm.springboot.grpc;
 
 import io.grpc.*;
-import study.yeshm.springboot.grpc.GRpcGlobalInterceptor;
-import study.yeshm.springboot.grpc.GRpcServerBuilderConfigurer;
+import study.yeshm.springboot.grpc.GrpcGlobalInterceptor;
+import study.yeshm.springboot.grpc.GrpcServerBuilderConfigurer;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +22,7 @@ public class TestConfig {
     public  static final String CUSTOM_EXECUTOR_MESSAGE="Hello from custom executor.";
 
     @Bean(name = "globalInterceptor")
-    @GRpcGlobalInterceptor
+    @GrpcGlobalInterceptor
     public ServerInterceptor globalInterceptor(){
 
         ServerInterceptor mock = mock(ServerInterceptor.class);
@@ -41,8 +41,8 @@ public class TestConfig {
 
     @Bean
     @Profile("customServerBuilder")
-    public GRpcServerBuilderConfigurer customGrpcServerBuilderConfigurer(){
-        return  new GRpcServerBuilderConfigurer(){
+    public GrpcServerBuilderConfigurer customGrpcServerBuilderConfigurer(){
+        return  new GrpcServerBuilderConfigurer(){
             @Override
             public void configure(ServerBuilder<?> serverBuilder){
                  serverBuilder.executor(command -> {

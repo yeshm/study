@@ -1,15 +1,15 @@
-package study.yeshm.springboot.grpc.demo.grpc;
+package study.yeshm.springboot.grpc.demo.grpc.service;
 
 import lombok.extern.slf4j.Slf4j;
 import study.yeshm.grpc.examples.CalculatorGrpc;
 import study.yeshm.grpc.examples.CalculatorOuterClass;
-import study.yeshm.springboot.grpc.GRpcService;
+import study.yeshm.springboot.grpc.GrpcService;
 import io.grpc.stub.StreamObserver;
 
 /**
  * @author yeshm
  */
-@GRpcService(interceptors = GrpcInterceptor.class)
+@GrpcService
 @Slf4j
 public class CalculatorGrpcService extends CalculatorGrpc.CalculatorImplBase {
 

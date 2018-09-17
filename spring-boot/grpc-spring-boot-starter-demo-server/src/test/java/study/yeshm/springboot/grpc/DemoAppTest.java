@@ -17,7 +17,6 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import study.yeshm.springboot.grpc.GRpcServerBuilderConfigurer;
 import study.yeshm.springboot.grpc.demo.DemoApp;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +45,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {DemoApp.class, TestConfig.class}, webEnvironment = RANDOM_PORT
         , properties = {"grpc.enableReflection=true",
-        "grpc.port=0"
+        "grpc.server.port=0"
 })
 public class DemoAppTest extends GrpcServerTestBase{
 
@@ -85,8 +84,8 @@ public class DemoAppTest extends GrpcServerTestBase{
         outputCapture.expect(containsString(GreeterGrpc.getSayHelloMethod().getFullMethodName()));
         outputCapture.expect(containsString(CalculatorGrpc.getCalculateMethod().getFullMethodName()));
 
-        outputCapture.expect(containsString("GrpcInterceptor begin..."));
-        outputCapture.expect(containsString("GrpcInterceptor end..."));
+        outputCapture.expect(containsString("GlobalGrpcInterceptor begin..."));
+        outputCapture.expect(containsString("GlobalGrpcInterceptor end..."));
     }
 
         @Test
@@ -99,8 +98,8 @@ public class DemoAppTest extends GrpcServerTestBase{
     @Test
     public void testDefaultConfigurer(){
         Assert.assertEquals("Default configurer should be picked up",
-                context.getBean(GRpcServerBuilderConfigurer.class).getClass(),
-                GRpcServerBuilderConfigurer.class);
+                context.getBean(GrpcServerBuilderConfigurer.class).getClass(),
+                GrpcServerBuilderConfigurer.class);
     }
 
     @Test

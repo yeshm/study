@@ -10,8 +10,8 @@ import org.springframework.boot.test.rule.OutputCapture;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import study.yeshm.springboot.grpc.demo.DemoApp;
-import study.yeshm.springboot.grpc.demo.grpc.CalculatorGrpcService;
-import study.yeshm.springboot.grpc.demo.grpc.GreeterGrpcService;
+import study.yeshm.springboot.grpc.demo.grpc.service.CalculatorGrpcService;
+import study.yeshm.springboot.grpc.demo.grpc.service.GreeterGrpcService;
 
 import java.util.concurrent.ExecutionException;
 
@@ -24,7 +24,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {DemoApp.class}, webEnvironment = NONE
-        , properties = {"spring.aop.proxy-target-class=true", "grpc.port=6568"}
+        , properties = {"spring.aop.proxy-target-class=true", "grpc.server.port=6568"}
 )
 @ActiveProfiles(profiles = {"aopTest"})
 public class DemoAppTestAop extends GrpcServerTestBase {
