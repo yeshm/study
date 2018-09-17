@@ -13,14 +13,18 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @Setter
 public class GrpcProperties {
 
+    public static final int DEFAULT_GRPC_PORT = 50051;
+
     @NestedConfigurationProperty
     private final ServerProperties server = new ServerProperties();
 
     @Getter
+    @NestedConfigurationProperty
+    private final StubProperties stub = new StubProperties();
+
+    @Getter
     @Setter
     public class ServerProperties {
-
-        public static final int DEFAULT_GRPC_PORT = 50051;
 
         /**
          * gRPC server port
@@ -44,6 +48,22 @@ public class GrpcProperties {
          * Available only from gRPC 1.3 or higher.
          */
         private boolean enableReflection = false;
+
+    }
+
+    @Getter
+    @Setter
+    public class StubProperties {
+
+        /**
+         * gRPC stub host
+         */
+        private String host = "";
+
+        /**
+         * gRPC stub port
+         */
+        private int port = DEFAULT_GRPC_PORT;
 
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.util.SocketUtils;
 
 import java.util.Properties;
 
-import static study.yeshm.springboot.grpc.autoconfigure.GrpcProperties.ServerProperties.DEFAULT_GRPC_PORT;
+import static study.yeshm.springboot.grpc.autoconfigure.GrpcProperties.DEFAULT_GRPC_PORT;
 
 /**
  * @author yeshm
