@@ -1,0 +1,37 @@
+{
+  "hints": [],
+  "groups": [
+  ],
+  "properties": [
+    {
+      "sourceType": "study.yeshm.springboot.grpc.autoconfigure.GrpcProperties",
+      "name": "grpc.server.port",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "study.yeshm.springboot.grpc.autoconfigure.GrpcProperties",
+      "name": "grpc.server.enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "study.yeshm.springboot.grpc.autoconfigure.GrpcProperties",
+      "name": "grpc.server.inProcessServerName",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "study.yeshm.springboot.grpc.autoconfigure.GrpcProperties",
+      "name": "grpc.server.enableReflection",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "study.yeshm.springboot.grpc.autoconfigure.GrpcProperties",
+      "name": "grpc.stub.host",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "study.yeshm.springboot.grpc.autoconfigure.GrpcProperties",
+      "name": "grpc.stub.port",
+      "type": "java.lang.Integer"
+    }
+  ]
+}
