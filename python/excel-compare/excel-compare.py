@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 import os
+import time
 
 import xlrd
 
-base_location = "/Users/yeshm/work/luckin/配货单核对/20181012/"
+base_location = "/Users/yeshm/work/luckin/配货单核对/"
+today = time.strftime('%Y%m%d', time.localtime(time.time()))
 
 
-def get_business_code_list(dir_name):
-    full_location = base_location + dir_name
+def get_business_code_list(day, dir_name):
+    full_location = base_location + day + os.sep + dir_name
     files = os.listdir(full_location)
 
     print("files under %s: %s" % (dir_name, files))
@@ -27,15 +29,19 @@ def get_business_code_list(dir_name):
         # 第一列
         cols = sheet.col_values(0)
         print("read %d cols" % len(cols))
+        print("cols content: %s" % cols)
         business_code_list += cols[1:len(cols)]
         print("business_code_list size:%d" % len(business_code_list))
 
     return business_code_list
 
 
-def compare():
-    lucky_business_code_list = get_business_code_list('lucky')
-    wms_business_code_list = get_business_code_list('wms')
+def compare(day=None):
+    if day is None:
+        day = today
+
+    lucky_business_code_list = get_business_code_list(day, 'lucky')
+    wms_business_code_list = get_business_code_list(day, 'wms')
 
     # 计算lucky多出的数据
     lucky_business_code_extra = []
@@ -57,4 +63,5 @@ def compare():
 
 
 if __name__ == '__main__':
+    # compare("20181012")
     compare()
