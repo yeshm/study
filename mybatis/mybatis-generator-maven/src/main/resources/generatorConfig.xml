@@ -6,7 +6,7 @@
     <!-- 数据库驱动-->
     <classPathEntry
             location="/Users/yeshm/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>
-    <context id="DB2Tables" targetRuntime="MyBatis3">
+    <context id="DB2Tables" targetRuntime="Ibatis2Java5">
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
@@ -35,7 +35,7 @@
         </sqlMapGenerator>
 
         <!-- 生成DAO的包名和位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="study.yeshm.mapper" targetProject="generated">
+        <javaClientGenerator type="SPRING" targetPackage="study.yeshm.mapper" targetProject="generated">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
