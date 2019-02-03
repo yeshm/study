@@ -1,0 +1,4 @@
+rootProject.name = 'spring-boot-transaction'
+
+include('transaction-starter')
+include('transaction-sample')

@@ -1,0 +1,34 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = '1.8'
+
+repositories {
+    jcenter() // http://jcenter.bintray.com
+}
+
+dependencies {
+//    compile 'org.postgresql:postgresql:42.2.2'
+    compile 'com.h2database:h2:1.4.197'
+    
+    implementation project(':transaction-starter')
+
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+//    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    implementation 'org.codehaus.groovy:groovy-all:2.5.4'
+    testImplementation 'org.spockframework:spock-core:1.2-groovy-2.5'
+//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
+}
