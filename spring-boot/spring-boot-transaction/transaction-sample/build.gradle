@@ -20,8 +20,9 @@ repositories {
 dependencies {
 //    compile 'org.postgresql:postgresql:42.2.2'
     compile 'com.h2database:h2:1.4.197'
-    
-    implementation project(':transaction-starter')
+
+    compile project(':transaction-starter')
+//    implementation project(':transaction-starter')
 
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
