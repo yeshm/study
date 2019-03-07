@@ -3,7 +3,6 @@ package study.yeshm.groovy.util;
 import groovy.lang.Binding;
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.Script;
-import lombok.extern.slf4j.Slf4j;
 import org.codehaus.groovy.runtime.InvokerHelper;
 
 import java.io.*;
@@ -12,7 +11,6 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-@Slf4j
 public class GroovyScriptUtil <T> {
 
     private static final GroovyClassLoader groovyClassLoader = new GroovyClassLoader();
@@ -79,9 +77,14 @@ public class GroovyScriptUtil <T> {
             try {
                 if (r != null) r.close();
             } catch (IOException e) {
-                //log.warn("Error in close after reading text from stream", e);
+                e.printStackTrace();
+                System.err.println("Error in close after reading text from stream");
             }
         }
+    }
+
+    private void test(){
+        //log.wa
     }
 
     private static synchronized Class compileGroovy(String script, String className) {
